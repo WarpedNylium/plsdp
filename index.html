@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to Lose 委員會組織章程">
+    <meta property="og:image" content="dian.png">
+    <title>雄中純情無私奉獻黨組織章程</title>
+    <link rel="icon" href="dian.png" type="image/png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="path/to/your/custom.css" rel="stylesheet">
+    <style>
+         body {
+            margin: 0;
+        padding-bottom: 130px; /* Adjust based on footer height */
+        background-color: #f0f0f0;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.6;
+        align-items: center;
+    }
+        .content {
+            display: flex;
+        
+            align-items: center;
+            flex-direction: column; /* Optional: if you want the content to be stacked vertically */
+            height: 100vh; /* Optional: if you want the content to take the full height of the viewport */
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #2c3e50;
+            color: white;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            margin-right: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 8px 16px;
+            text-align: left;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #2c3e50;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .top-right-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .top-right-buttons button {
+            border: 1px solid #2c3e50;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        .top-right-buttons button:hover {
+            background-color: #1a252f;
+        }
+        .top-bar {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .search-bar {
+            width: 80%;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .search-bar .input-group {
+            flex-grow: 1;
+        }
+        .search-bar input {
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+        .search-bar .input-group-append .btn {
+            border: 1px solid #2c3e50;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        .search-bar .input-group-append .btn:hover {
+            background-color: #1a252f;
+        }
+
+        section {
+            width: 80%;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 0;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        p, li {
+            font-size: 1em;
+            color: #555;
+            margin: 10px 0;
+        }
+        ul {
+            padding-left: 20px;
+            list-style: none;
+        }
+
+    
+    
+    
+        
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+        .dark-mode header {
+            background-color: #1a252f;
+        }
+        .dark-mode section {
+            background-color: #444;
+            color: white;
+        }
+        .dark-mode h2 {
+            color: #ddd;
+            border-bottom-color: #444;
+        }
+        .dark-mode p, .dark-mode li {
+            color: #ccc;
+        }
+
+        
+        @media (max-width: 768px) {
+            .header-title {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            #sidebarToggle
+            .search-bar {
+                position: static;
+                margin: 10px 0;
+            }
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#searchForm').on('submit', function(e) {
+                e.preventDefault();
+                var query = $('#searchInput').val().toLowerCase();
+                $('section').each(function() {
+                    var sectionText = $(this).text().toLowerCase();
+                    if (sectionText.includes(query)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+
+                });
+            });
+            
+            $('#darkModeButton').on('click', function() {
+                $('body').toggleClass('dark-mode');
+            });
+            $('#sidebarToggle').on('click', function() {
+                var sidebar = $('#sidebar');
+                if (sidebar.css('left') === '-250px') {
+                    sidebar.css('left', '0');
+                } else {
+                    sidebar.css('left', '-250px');
+                }
+            });
+
+        
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1 class="zh">雄中純情無私奉獻黨組織章程</h1>
+        <div class="top-right-buttons">
+            <button id = "darkModeButton">Drk Md</button>
+            <button id="sidebarToggle">☰</button>
+        </div>
+    </header>
+        <div class="content">
+            <div class="search-bar">
+                <form id="searchForm" class="form-inline">
+                    <div class="input-group">
+                        <input id="searchInput" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <section>
+                <h2 class="zh">第一條 基本資訊</h2>
+            
+                <ul class="zh">
+                    <li>本章程依據高雄市立高雄高級中學學生聯合自治會政黨組織自治條例制定，黨名為「雄中純情無私奉獻黨」（英譯為ISDP Innocence-selfless-dedication party），簡稱「奉獻黨」（英譯為ISDP），以下簡稱本黨。</li>
+                </ul>
+                
+            </section>
+            <section>
+                <h2 class="zh">第二條 黨徽</h2>
+    
+                <p class="zh">本黨黨徽以純白為底，兩個空心圓，中心有一名男孩人比愛心以象徵純情，兩圓之間填充以「高雄中學」及「純情無私奉獻黨」字樣。</p>
+
+            </section>
+            <section>
+                <h2 class="zh">第三條 宗旨</h2>
+    
+                <ul class="zh">
+                <p>本黨宗旨如下：</p>
+                </p>1.增進全體同學之福祉。</p>
+                </p>2.宣揚愛與包容之理念。</p>
+                </p>3.培養學生公民素養。</p>
+                </p>4.促進學生自治。</p>
+                </p>5.促進雄中與南部各女校交流。</p>
+                </ul>
+            
+            </section>
+            <section>
+                <h2 class="zh">第四條 性質</h2>
+                <ul class="zh">
+                    本黨為區域性政黨，政黨組織區域為高雄市立高雄高級中學。本黨黨部設於大雄中帝國。
+                </ul>
+            
+            </section>
+                
+                
+            <section>
+                <h2 class="zh">第五條 入黨</h2>
+                <ul>
+                </p>1.本章程所指之黨員以黨員名冊為準</p>
+                </p>2.欲為黨員，應填寫入黨之網路或紙本表單，經決策委員會審核方可入黨。</p>
+                </ul>
+                
+        
+
+            
+            </section>
+            <section>
+                <h2 class="zh">第六條 退黨</h2>
+                <ul>
+                <p>1.	原則上黨員可擁有其他黨籍，但有其他黨籍者不得擔任幹部。</p>
+                <p>1.1 幹部指如下之職位：主席、副主席、決策委員、黨紀委員。</p>
+                <p>2.	黨員隨時可向決策委員會聲明退黨，24小時內可收回，逾24小時未收回退黨。</p>
+                <p>3.	欲重新入黨經一般入黨程序且一個月內不得重新入黨。</p>
+                <p>4.	重複退出超過三次者，終生不得再入黨。</p>
+            
+                </ul>
+                
+        
+
+            
+            </section>
+            <section>
+<h2 class="zh">第七條 黨主席</h2>
+<p>1.黨主席之職權如下：</p>
+<p style="margin-left: 25px;">1.1黨主席為本黨負責人，負責對外代表本黨、對內領導決策委員會。</p>
+<p style="margin-left: 25px;">1.2任命副主席與決策委員。</p>
+<p style="margin-left: 25px;">1.3擔任黨員大會主席。</p>
+<p style="margin-left: 25px;">1.4主席因故無法執權時由副主席代行職權。</p>
+<p style="margin-left: 25px;">1.5提名黨紀委員。</p>
+<p>2.黨主席之任期及選舉辦法：</p>
+<p style="margin-left: 25px;">2.1黨主席、副主席任期為一年，連選得連任。</p>
+<p style="margin-left: 25px;">2.2欲參選者應於黨員大會前向黨紀委員會登記參選。</p>
+<p style="margin-left: 25px;">2.3於黨員大會進行投票，採匿名平等普通直接之相對多數決進行。</p>
+<p style="margin-left: 25px;">2.4若有多名候選人得票數相同票數之情形，由黨紀委員會主任委員公開抽籤決定。</p>
+</section>
+<section>
+    <h2 class="zh">第八條 黨員大會</h2>
+    
+<p>1.黨員大會之職權如下：</p>
+<p style="margin-left: 25px;">1.1創黨召開一次黨成立大會，成立大會參與者為當然黨員。</p>
+<p style="margin-left: 25px;">1.2一學年召開一次黨員大會，若出席率未達1/4另擇期召開。</p>
+<p style="margin-left: 25px;">1.3修訂本黨章程。</p>
+<p style="margin-left: 25px;">1.4監督決策委員會。</p>
+<p style="margin-left: 25px;">1.5受理與議決提案。</p>
+<p>2.黨員大會得要求黨主席與決策委員出席會議，黨主席指定一人紀錄會議。</p>
+<p>3.超過1/4全體黨員連署可召開臨時會議。</p>
+<p>4.超過1/2黨員同意即可變更黨名。</p>
+<p>5.超過2/3全體黨員同意即可解散本黨。</p>
+<p>6.與他黨合併，須有超過2/3全體黨員同意。</p>
+<p>7.黨員大會可召開緊急會議發起不信任案，超過2/3黨員同意	即解散決策委員會。</p>
+<p>8.本章程所超過一比例人數，若該比例人數不為自然數，則無	條件進位至整數位。</p>
+
+</section>
+            
+<section>
+    <h2 class="zh">第九條 黨員之權利義務</h2>
+    
+    <p>1.黨員之義務如下：</p>
+    <p style="margin-left: 25px;">1.1遵守本章程、服從本黨之決議。</p>
+    <p style="margin-left: 25px;">1.2宣揚並推廣本黨理念、政見。</p>
+    <p style="margin-left: 25px;">1.3參與黨員大會。</p>
+    <p style="margin-left: 25px;">1.4支持本黨推薦之候選人，有多重黨籍者亦同。</p>
+    <p>2.黨員之權利如下：</p>
+    <p style="margin-left: 25px;">2.1有依據本章程選舉、被選舉之權利。</p>
+    <p style="margin-left: 25px;">2.2在黨員大會有發言、提名、提案及表決之權利。</p>
+    <p style="margin-left: 25px;">2.3 有接受本黨提名、推薦與支援之權利。</p>
+    <p style="margin-left: 25px;">2.4 對本黨有建議、申訴及獲得資訊之權利。</p>
+    <p style="margin-left: 25px;">2.5 對本黨之活動有參與之權利。</p>
+    <p style="margin-left: 25px;">2.6 對本黨提供之福利有享受之權利。</p>
+    <p style="margin-left: 25px;">2.7 對本黨之違規黨員，有向黨紀委員會提出申訴之權利。</p>
+    <p style="margin-left: 25px;">2.8接受黨主席任命職位。</p>
+    
+
+
+</section>
+<section>
+    <h2 class="zh">    第十條 決策委員會組織架構</h2>
+
+    <p>1.決策委員會為本黨最高執行機構，必要時可進行臨時決	議。</p>
+    <p>2.決策委員會應設決策委員五至十二人，黨主席、副主席、黨	紀委員會主任委員為當然決策委員。</p>
+    <p>3.決策委員由黨主席任命，黨主席得於決策委員會設置若干	特別委員會或特別委員</p>
+    <p>4.決策委員、特別委員任期同黨主席。</p>
+
+
+</section>
+<section>
+    <h2 class="zh">   第十一條 決策委員會職責</h2>
+
+    
+    <p>決策委員會掌理下列事項：</p>
+    <p>1.處理黨內行政事務</p>
+    <p>2.處理本黨外務</p>
+    <p>3.關於本黨行政事務之研究、分析、評估及諮詢事項</p>
+    <p>4.關於本黨外務之研究、分析、評估及諮詢事項</p>
+    <p>5.關於他黨之研究、分析、評估及諮詢事項</p>
+    <p>6.關於校內自治選舉之研究、分析、評估及諮詢事項</p>
+    <p>7.關於本黨資訊系統之整體規劃、系統分析、設計、建置及維	護事項。</p>
+    
+</section>
+<section>
+    <h2 class="zh">  第十二條 黨紀委員會組織架構</h2>
+    
+<p>1.應設立黨紀委員會，由黨員大會推選五人。</p>
+<p>2.黨紀委員可兼任其他幹部。</p>
+<p>3.黨紀委員不得擁有它黨黨籍。</p>
+<p>4.黨紀委員會設一主任委員，由黨紀委員互選之。</p>
+<p>5.主委之職權如下：</p>
+<p style="margin-left: 25px;">5.1主持會議、維持會議秩序。</p>
+<p style="margin-left: 25px;">5.2相異裁決同票時抽籤決定。</p>
+<p>6.黨紀委員、主委任期同黨主席。</p>
+<p>7.黨紀委員會主任委員應兼任決策委員。</p>
+</section>
+
+<section>
+    <h2 class="zh">      第十三條 黨紀委員會職責</h2>
+
+    <p>1.黨紀委員會之職權如下：</p>
+    <p style="margin-left: 25px;">1.1對失職幹部處以處份。</p>
+    <p style="margin-left: 25px;">1.2對涉及重大事件之黨員致其危害本黨名譽或有影響本黨運作之黨員處以處份。</p>
+    <p style="margin-left: 25px;">1.3對涉及違法事件之黨員處以處分。</p>
+    <p style="margin-left: 25px;">1.4黨紀委員會可斟酌情況採取之處分為退黨、暫時不得入黨、永久不得入黨、記過。</p>
+    <p style="margin-left: 25px;">1.5紀過三次之黨員立即免除黨員身分且1年內不得入黨。</p>
+    <p>2.接受裁決黨員及黨外人士之申訴</p>
+    <p style="margin-left: 25px;">2.1黨紀委員會應以不公開之方式處理申訴。</p>
+    <p style="margin-left: 25px;">2.2處理申訴之黨紀委員不得為當事人。</p>
+    <p style="margin-left: 25px;">2.3若主委為當事人，黨紀委員會應指派一調查召集人。</p>
+    <p style="margin-left: 25px;">2.4申訴由主委指派專人負責接收，並應通知全體黨紀委員。</p>
+    <p style="margin-left: 25px;">2.5若黨員大會認定黨紀委員會過半數為當事人以致影響裁決公平由黨主席另指派委員會。</p>
+    <p style="margin-left: 25px;">2.6若黨員大會認定多名黨紀委員及黨主席為當事人以致影響裁決公平，由黨員大會裁決。</p>
+    <p style="margin-left: 25px;">2.7若全體黨員多名為當事人，則不加以裁決。</p>
+    <p style="margin-left: 25px;">2.8若有任何黨員使圖舞弊影響黨紀委員會裁決，黨紀委員會可召開緊急會議免除其黨籍。</p>
+    
+</section>
+
+
+<footer class="footer">
+    <p class="zh"> &copy; 2024 純情無私奉獻黨. 保留一切權利。版權所有，盜印必究。</p>
+
+    <p></p>
+</footer>
+
+
+            
+
+        
+    </div> 
+
+
+</body>
+</html>
