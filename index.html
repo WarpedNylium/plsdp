@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="純情無私奉獻黨組織章程">
+    <meta name="description" content="How to Lose 委員會組織章程">
     <meta property="og:image" content="dian.png">
     <title>雄中純情無私奉獻黨組織章程</title>
     <link rel="icon" href="dian.png" type="image/png">
@@ -11,37 +11,49 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="path/to/your/custom.css" rel="stylesheet">
     <style>
-         body {
-            margin: 0;
-        padding-bottom: 130px; /* Adjust based on footer height */
+          body {
+        margin: 0;
+        padding-bottom: 130px;
         background-color: #f0f0f0;
         font-family: 'Helvetica Neue', Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
         line-height: 1.6;
-        align-items: center;
+        min-height: 100vh;
+        width: 100%;
     }
-        .content {
-            display: flex;
-        
-            align-items: center;
-            flex-direction: column; /* Optional: if you want the content to be stacked vertically */
-            height: 100vh; /* Optional: if you want the content to take the full height of the viewport */
-        }
+    .page {
+        width: 100%; /* Add this */
+        display: none; /* Change from display: none to this initial state */
+    }
 
-        .sidebar {
-            width: 250px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: -250px;
-            background-color: #2c3e50;
-            color: white;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 60px;
-            margin-right: 20px;
-        }
+    .page.active {
+        display: block;
+    }
+
+    .content {
+        width: 80%;
+        margin: 0 auto;
+        transition: margin-left 0.3s;
+        padding: 20px;
+    }
+
+    .content.shifted {
+        margin-left: 250px;
+        width: calc(80% - 250px);
+    }
+
+    .sidebar {
+        width: 250px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        background-color: #2c3e50;
+        color: white;
+        overflow-x: hidden;
+        transition: 0.3s;
+        padding-top: 60px;
+        z-index: 1000;
+    }
         .sidebar ul {
             list-style-type: none;
             padding: 0;
@@ -58,6 +70,16 @@
         .sidebar ul li a:hover {
             background-color: #575757;
         }
+
+        .section-content {
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .section-content.collapsed {
+            display: none;
+        }
+
         header {
             width: 100%;
             text-align: center;
@@ -121,15 +143,31 @@
         .search-bar .input-group-append .btn:hover {
             background-color: #1a252f;
         }
+        .page {
+            display: none;
+            width: 80%;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .collapse-button {
+            float: right;
+            background: none;
+            border: none;
+            color: #2c3e50;
+            cursor: pointer;
+        }
 
         section {
-            width: 80%;
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+        width: 100%; /* Change from 80% to 100% */
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
         h2 {
             font-size: 1.5em;
             color: #333;
@@ -195,6 +233,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function() {
+            $('#mainPage').addClass('active').show();
             $('#searchForm').on('submit', function(e) {
                 e.preventDefault();
                 var query = $('#searchInput').val().toLowerCase();
@@ -220,13 +259,56 @@
                     sidebar.css('left', '-250px');
                 }
             });
+        $('#sidebarToggle').on('click', function() {
+            var sidebar = $('#sidebar');
+            var content = $('.content');
+            if (sidebar.css('left') === '-250px') {
+                sidebar.css('left', '0');
+                content.addClass('shifted');
+            } else {
+                sidebar.css('left', '-250px');
+                content.removeClass('shifted');
+            }
+        });
+        
+        // Navigation
+        $('.nav-link').on('click', function(e) {
+        e.preventDefault();
+        const targetPage = $(this).data('page');
+        $('.page').removeClass('active').hide();
+        $(`#${targetPage}`).addClass('active').show();
+        
+        // Store the active page in localStorage
+        localStorage.setItem('activePage', targetPage);
+    });
 
+    const activePage = localStorage.getItem('activePage') || 'mainPage';
+    $('.page').removeClass('active').hide();
+    $(`#${activePage}`).addClass('active').show();
+
+            // Add collapse functionality
+            $('#collapseButton').on('click', function() {
+                $('.section-content').toggleClass('collapsed');
+            });
+
+            // Individual section collapse
+            $('.collapse-button').on('click', function() {
+                $(this).closest('section').find('.section-content').toggleClass('collapsed');
+            });
         
 
         });
+        
     </script>
 </head>
 <body>
+    <div id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="#" class="nav-link" data-page="mainPage">組織章程</a></li>
+            <li><a href="#" class="nav-link" data-page="recordsPage">黨紀委員會審議紀錄</a></li>
+            <li><a href="#" class="nav-link" data-page="amendmentsPage">章程修訂記錄</a></li>
+        </ul>
+    </div>
     <header>
         <h1 class="zh">雄中純情無私奉獻黨組織章程</h1>
         <div class="top-right-buttons">
@@ -245,11 +327,12 @@
                     </div>
                 </form>
             </div>
+        <div id="mainPage" class="page active">
             <section>
                 <h2 class="zh">第一條 基本資訊</h2>
             
                 <ul class="zh">
-                    <li>本章程依據高雄市立高雄高級中學學生聯合自治會政黨組織自治條例制定，黨名為「雄中純情無私奉獻黨」（英譯為ISDP Innocence-selfless-dedication party），簡稱「奉獻黨」（英譯為ISDP），以下簡稱本黨。</li>
+                    <li>本章程依據高雄市立高雄高級中學學生聯合自治會政黨組織自治條例制定，黨名為「雄中純情無私奉獻黨」（英譯為 PLSDP Pure-love-Selfless-Dedication party），簡稱「奉獻黨」（英譯為 PLSDP），以下簡稱本黨。</li>
                 </ul>
                 
             </section>
@@ -262,14 +345,14 @@
             <section>
                 <h2 class="zh">第三條 宗旨</h2>
     
-                <ul class="zh">
+                
                 <p>本黨宗旨如下：</p>
                 </p>1.增進全體同學之福祉。</p>
                 </p>2.宣揚愛與包容之理念。</p>
                 </p>3.培養學生公民素養。</p>
                 </p>4.促進學生自治。</p>
                 </p>5.促進雄中與南部各女校交流。</p>
-                </ul>
+                
             
             </section>
             <section>
@@ -296,7 +379,7 @@
                 <h2 class="zh">第六條 退黨</h2>
                 <ul>
                 <p>1.	原則上黨員可擁有其他黨籍，但有其他黨籍者不得擔任幹部。</p>
-                <p>1.1 幹部指如下之職位：主席、副主席、決策委員、黨紀委員。</p>
+                <p style="margin-left: 25px;">1.1 幹部指如下之職位：主席、副主席、決策委員、黨紀委員。</p>
                 <p>2.	黨員隨時可向決策委員會聲明退黨，24小時內可收回，逾24小時未收回退黨。</p>
                 <p>3.	欲重新入黨經一般入黨程序且一個月內不得重新入黨。</p>
                 <p>4.	重複退出超過三次者，終生不得再入黨。</p>
@@ -335,8 +418,8 @@
 <p>4.超過1/2黨員同意即可變更黨名。</p>
 <p>5.超過2/3全體黨員同意即可解散本黨。</p>
 <p>6.與他黨合併，須有超過2/3全體黨員同意。</p>
-<p>7.黨員大會可召開緊急會議發起不信任案，超過2/3黨員同意	即解散決策委員會。</p>
-<p>8.本章程所超過一比例人數，若該比例人數不為自然數，則無	條件進位至整數位。</p>
+<p>7.黨員大會可召開緊急會議發起不信任案，超過2/3黨員同意即解散決策委員會。</p>
+<p>8.本章程所超過一比例人數，若該比例人數不為自然數，則無條件進位至整數位。</p>
 
 </section>
             
@@ -364,9 +447,9 @@
 <section>
     <h2 class="zh">    第十條 決策委員會組織架構</h2>
 
-    <p>1.決策委員會為本黨最高執行機構，必要時可進行臨時決	議。</p>
-    <p>2.決策委員會應設決策委員五至十二人，黨主席、副主席、黨	紀委員會主任委員為當然決策委員。</p>
-    <p>3.決策委員由黨主席任命，黨主席得於決策委員會設置若干	特別委員會或特別委員</p>
+    <p>1.決策委員會為本黨最高執行機構，必要時可進行臨時決議。</p>
+    <p>2.決策委員會應設決策委員五至十二人，黨主席、副主席、黨紀委員會主任委員為當然決策委員。</p>
+    <p>3.決策委員由黨主席任命，黨主席得於決策委員會設置若干特別委員會或特別委員</p>
     <p>4.決策委員、特別委員任期同黨主席。</p>
 
 
@@ -382,7 +465,7 @@
     <p>4.關於本黨外務之研究、分析、評估及諮詢事項</p>
     <p>5.關於他黨之研究、分析、評估及諮詢事項</p>
     <p>6.關於校內自治選舉之研究、分析、評估及諮詢事項</p>
-    <p>7.關於本黨資訊系統之整體規劃、系統分析、設計、建置及維	護事項。</p>
+    <p>7.關於本黨資訊系統之整體規劃、系統分析、設計、建置及維護事項。</p>
     
 </section>
 <section>
@@ -400,7 +483,7 @@
 </section>
 
 <section>
-    <h2 class="zh">      第十三條 黨紀委員會職責</h2>
+    <h2 class="zh">第十三條 黨紀委員會職責</h2>
 
     <p>1.黨紀委員會之職權如下：</p>
     <p style="margin-left: 25px;">1.1對失職幹部處以處份。</p>
@@ -419,10 +502,32 @@
     <p style="margin-left: 25px;">2.8若有任何黨員使圖舞弊影響黨紀委員會裁決，黨紀委員會可召開緊急會議免除其黨籍。</p>
     
 </section>
+</div>
+<div id="recordsPage" class="page">
+    <section>
+        <h2>黨紀委員會審議紀錄</h2>
+        <div class="section-content">
+            <!-- Add your PDF links here -->
 
+            <div class="pdf-entry">
+                <h3>A201</h3>
+                <embed src="黨紀委員會調查報告書.pdf" type="application/pdf" width="100%" height="600px">
+            </div>
+        </div>
+    </section>
+</div>
 
+<div id="amendmentsPage" class="page">
+    <section>
+        <h2>章程修訂記錄</h2>
+        <div class="section-content">
+            <!-- Add your amendment records here -->
+            <p>尚無修訂記錄</p>
+        </div>
+    </section>
+</div>
 <footer class="footer">
-    <p class="zh"> &copy; 2024 純情無私奉獻黨. 保留一切權利。版權所有，盜印必究。</p>
+    <p class="zh"> &copy; 2024 純情無私奉獻黨</p>
 
     <p></p>
 </footer>
